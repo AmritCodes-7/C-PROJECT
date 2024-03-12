@@ -70,7 +70,8 @@ HOMEPAGE:
     printf("\n\n------------- LOG-IN PAGE -------------\n");
     printf("\t   1. SignUp\n");
     printf("\t   2. Log in\n");
-    printf("\t   3. Exit\n");
+    printf("\t   3. Log in as Admin\n");
+    printf("\t   4. Exit\n");
     printf("\nEnter the task you want to perform: ");
     scanf("%d", &choiceOfLogin);
     switch (choiceOfLogin)
@@ -206,6 +207,10 @@ HOMEPAGE:
 
         break;
     case 3:
+
+        printf("\n\n\t\t\t\t\t\t\t\t------------- BANKING SYSTEM -------------\n");
+
+        printf("\n\n\t\t\t\t\t\t\t\t1.SEARCH USER\t\t2.\n\t\t\t\t\t\t\t\t3.DEPOSIT\t\t\t4.CHANGE PIN\n\t\t\t\t\t\t\t\t5.EXIT");
         fptrsign = fopen("signin_information.txt", "rb+");
         printf("\n\n");
         printf("");
