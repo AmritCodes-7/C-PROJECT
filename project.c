@@ -14,6 +14,7 @@ typedef struct user
     int pin;
     char email[30];
     char password[10];
+    float balance;
 } in;
 
 typedef struct readUser
@@ -22,7 +23,9 @@ typedef struct readUser
     int pin;
     char email[30];
     char password[10];
+    float balance;
 } rd;
+
 in customerIn;
 rd customerRd;
 FILE *fptrsign;
@@ -93,10 +96,10 @@ HOMEPAGE:
             srand(time(0));
             int randomNumber = rand() % 9000 + 1000;
             customerIn.pin = randomNumber;
-            printf("REMEMBER YOUR PIN:%d", customerIn.pin);
             fptrsign = fopen("signin_information.txt", "ab+");
             printf("\nPassword matched");
             printf("\nSuccessfully signed in....\n");
+            printf("\n\nREMEMBER YOUR PIN:%d", customerIn.pin);
             fwrite(&customerIn, sizeof(struct user), 1, fptrsign);
             fclose(fptrsign);
             fflush(stdin);
@@ -121,7 +124,7 @@ HOMEPAGE:
         printf("");
         break;
     case 2:
-
+    ENTERPASSWORD:
         printf("\n\n\t\t\t\tEnter your Username:\t");
         fflush(stdin);
         gets(customerIn.name);
@@ -146,8 +149,8 @@ HOMEPAGE:
                         system("cls");
                         int choiceOfBanking;
                         printf("\n\n\t\t\t\t\t\t\t\t------------- BANKING SYSTEM -------------\n");
-                        printf("\n\n%s\n%s", customerRd.name, customerRd.email);
-                        printf("\n\n\t\t\t\t\t\t\t\t1.BALANCE INQUIRY\t\t2.TRANSFER\n\t\t\t\t\t\t\t\t3.DEPOSIT\t\t\t4.CHANGE PIN\n\t\t\t\t\t\t\t\t5.EXIT");
+                        printf("\n\n%s\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%f\n%s", customerRd.name, customerRd.balance, customerRd.email);
+                        printf("\n\n\t\t\t\t\t\t\t\t1.BALANCE INQUIRY\t\t2.TRANSFER\n\t\t\t\t\t\t\t\t3.DEPOSIT\t\t\t4.EXIT");
                         printf("\n\nEnter operation you want to perform: ");
                         scanf("%d", &choiceOfBanking);
 
@@ -161,12 +164,9 @@ HOMEPAGE:
                         }
                         else if (choiceOfBanking == 3)
                         {
-                            // deposit
+                            printf("\t\t\t\t");
                         }
                         else if (choiceOfBanking == 4)
-                        {
-                        }
-                        else if (choiceOfBanking == 5)
                         {
                             exit(0);
                         }
@@ -200,7 +200,18 @@ HOMEPAGE:
             }
             else
             {
-                printf("*");
+                char optionOfPw;
+                printf("\n\n\nNo username with this password is found.");
+                printf("\nDo you want to try again[y/n]:\t");
+                optionOfPw = getchar();
+                if (optionOfPw == 'y' || optionOfPw == 'Y')
+                {
+                    goto ENTERPASSWORD;
+                }
+                else
+                {
+                    goto HOMEPAGE;
+                }
             }
         }
         fclose(fptrsign);
