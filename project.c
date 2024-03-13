@@ -150,13 +150,20 @@ HOMEPAGE:
                         int choiceOfBanking;
                         printf("\n\n\t\t\t\t\t\t\t\t------------- BANKING SYSTEM -------------\n");
                         printf("\n\n%s\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%f\n%s", customerRd.name, customerRd.balance, customerRd.email);
-                        printf("\n\n\t\t\t\t\t\t\t\t1.BALANCE INQUIRY\t\t2.TRANSFER\n\t\t\t\t\t\t\t\t3.DEPOSIT\t\t\t4.EXIT");
+                        printf("\n\n\t\t\t\t\t\t\t\t1.SATEMENTS\t\t2.TRANSFER\n\t\t\t\t\t\t\t\t3.DEPOSIT\t\t\t4.EXIT");
                         printf("\n\nEnter operation you want to perform: ");
                         scanf("%d", &choiceOfBanking);
 
                         if (choiceOfBanking == 1)
                         {
-                            // balance inquiry
+                            fptrsign = fopen("statements.txt", "wb+");
+                            printf("\n\n");
+                            printf("");
+                            while (fread(&customerRd, sizeof(struct readUser), 1, fptrsign))
+                            {
+                                printf()
+                            }
+                            fclose(fptrsign);
                         }
                         else if (choiceOfBanking == 2)
                         {
