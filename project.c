@@ -161,7 +161,7 @@ HOMEPAGE:
                             printf("");
                             while (fread(&customerRd, sizeof(struct readUser), 1, fptrsign))
                             {
-                                printf()
+                                // printf();
                             }
                             fclose(fptrsign);
                         }
@@ -171,7 +171,7 @@ HOMEPAGE:
                         }
                         else if (choiceOfBanking == 3)
                         {
-                            printf("\t\t\t\t");
+                            printf("\t\t\t\tEnter the amount you want to transfer");
                         }
                         else if (choiceOfBanking == 4)
                         {
