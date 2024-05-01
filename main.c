@@ -6,8 +6,9 @@
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
-
-//  all functions
+// 6894
+// 6989
+//   all functions
 void HidePassword(char[]);
 // creating a structure that will store the information of the user
 typedef struct
@@ -91,11 +92,11 @@ HOMEPAGE:
             int randomNumber = rand() % 9000 + 1000;
             user_me.pin = randomNumber;
             printf("\n\nREMEMBER YOUR PIN:%d", user_me.pin);
-            ptr_signin = fopen("sign_info.dat", "ab+");
+            ptr_signin = fopen("sign_info.txt", "a+");
             fwrite(&user_me, sizeof(user), 1, ptr_signin);
 
-            fflush(stdin);
             fclose(ptr_signin);
+            fflush(stdin);
             printf("\nDo you want to perform any other task[y/n]:\t");
             choice_of_option = getchar();
             if (choice_of_option == 'y' || choice_of_option == 'Y')
@@ -124,7 +125,7 @@ HOMEPAGE:
         printf("\t\t\t\tEnter your password:\t");
         HidePassword(user_me.password);
 
-        ptr_signin = fopen("sign_info.dat", "rb");
+        ptr_signin = fopen("sign_info.txt", "r");
         while (fread(&user_read, sizeof(user_Rd), 1, ptr_signin))
         {
             if (strcmp(user_me.name, user_read.name) == 0)
@@ -197,7 +198,7 @@ HOMEPAGE:
                                     Sleep(2000);
                                     goto INVALID;
                                 }
-                                ptr_signin = fopen("sign_info.dat", "ab+");
+                                ptr_signin = fopen("sign_info.txt", "a+");
                                 printf("\n\t\t\tBalanced Transfered to account number %d", user_transfer.receiver_acc);
                                 user_read.balance = user_read.balance - user_transfer.amount;
                                 while (fread(&user_me, sizeof(user), 1, ptr_signin))
@@ -241,7 +242,7 @@ HOMEPAGE:
                                 printf("\n\t\tAmount deposited:\t%f", user_deposit.amount);
                                 ptr_deposit = fopen("deposit.txt", "a+");
                                 fprintf(ptr_deposit, "%s\t%f\t%d\t%c\n", user_deposit.name, user_deposit.amount, user_deposit.receiver_acc, user_deposit.r_or_s);
-                                ptr_signin = fopen("sign_info.dat", "ab+");
+                                ptr_signin = fopen("sign_info.txt", "a+");
                                 user_read.balance = user_read.balance + user_deposit.amount;
                                 while (fread(&user_me, sizeof(user), 1, ptr_signin))
                                 {
@@ -311,7 +312,7 @@ HOMEPAGE:
     case 3:
         system("cls");
         printf("\n\n\t\t\t\t\t\t\t\t------------- BANKING SYSTEM -------------\n");
-        ptr_signin = fopen("sign_info.dat", "rb+");
+        ptr_signin = fopen("sign_info.txt", "r+");
         printf("\n\n");
         printf("");
         while (fread(&user_read, sizeof(user_Rd), 1, ptr_signin))
