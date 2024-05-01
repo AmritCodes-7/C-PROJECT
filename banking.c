@@ -193,7 +193,7 @@ HOMEPAGE:
 
                                 usr.balance += amount;
 
-                                fptr = fopen(phone, , "w");
+                                fptr = fopen(phone, "w");
                                 fwrite(&usr, sizeof(struct user), 1, fptr);
                                 if (fwrite != 0)
                                 {
