@@ -175,6 +175,7 @@ HOMEPAGE:
                         break;
 
                     case 3:
+                        fflush(stdin);
                         printf("\n\t\t\tPlease enter the phone number to trasnfer balance:\t");
                         scanf("%s", phone);
                         printf("\n\t\t\tEnter the amount to transfer:\t");
